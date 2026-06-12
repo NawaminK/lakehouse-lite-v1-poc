@@ -1,0 +1,159 @@
+{
+  "version": 1,
+  "description": "Lakehouse Lite v1 POC scenario manifest. Shell scripts and Airflow should use this as the scenario source of truth.",
+  "scenarios": [
+    {
+      "id": "00",
+      "slug": "platform_health_check",
+      "name": "Platform health check",
+      "executor": "manual",
+      "doc": "docs/scenarios/scenario-00-platform-health-check.md"
+    },
+    {
+      "id": "01",
+      "slug": "base_end_to_end",
+      "name": "Base end-to-end table creation",
+      "executor": "spark",
+      "path": "/home/iceberg/jobs/01_create_tables.py",
+      "airflow": true,
+      "doc": "docs/scenarios/scenario-01-base-end-to-end.md"
+    },
+    {
+      "id": "02",
+      "slug": "base_quality_check",
+      "name": "Base data quality checks",
+      "executor": "spark",
+      "path": "/home/iceberg/jobs/02_quality_check.py",
+      "airflow": true,
+      "doc": "docs/scenarios/scenario-02-base-quality-gate.md"
+    },
+    {
+      "id": "03",
+      "slug": "schema_evolution",
+      "name": "Schema evolution",
+      "executor": "spark",
+      "path": "/home/iceberg/jobs/scenarios/03_schema_evolution.py",
+      "airflow": true,
+      "doc": "docs/scenarios/scenario-03-schema-evolution.md"
+    },
+    {
+      "id": "04",
+      "slug": "cdc_merge_upsert",
+      "name": "CDC merge/upsert",
+      "executor": "spark",
+      "path": "/home/iceberg/jobs/scenarios/04_cdc_merge_upsert.py",
+      "airflow": true,
+      "doc": "docs/scenarios/scenario-04-cdc-merge-upsert.md"
+    },
+    {
+      "id": "05",
+      "slug": "time_travel_snapshots",
+      "name": "Time travel and snapshots",
+      "executor": "spark",
+      "path": "/home/iceberg/jobs/scenarios/05_time_travel_snapshots.py",
+      "airflow": true,
+      "doc": "docs/scenarios/scenario-05-time-travel-snapshots.md"
+    },
+    {
+      "id": "06",
+      "slug": "partition_file_layout",
+      "name": "Partitioning and file layout",
+      "executor": "spark",
+      "path": "/home/iceberg/jobs/scenarios/06_partition_file_layout.py",
+      "airflow": true,
+      "doc": "docs/scenarios/scenario-06-partition-file-layout.md"
+    },
+    {
+      "id": "07",
+      "slug": "quality_failure_expected",
+      "name": "Expected data quality failure",
+      "executor": "spark",
+      "path": "/home/iceberg/jobs/scenarios/07_quality_failure_expected.py",
+      "airflow": true,
+      "doc": "docs/scenarios/scenario-07-quality-failure-expected.md"
+    },
+    {
+      "id": "08",
+      "slug": "iceberg_maintenance",
+      "name": "Iceberg maintenance",
+      "executor": "spark",
+      "path": "/home/iceberg/jobs/scenarios/08_iceberg_maintenance.py",
+      "airflow": true,
+      "doc": "docs/scenarios/scenario-08-iceberg-maintenance.md"
+    },
+    {
+      "id": "09",
+      "slug": "late_arriving_backfill",
+      "name": "Late arriving data and backfill rebuild",
+      "executor": "spark",
+      "path": "/home/iceberg/jobs/scenarios/09_late_arriving_backfill.py",
+      "airflow": true,
+      "doc": "docs/scenarios/scenario-09-late-arriving-backfill.md"
+    },
+    {
+      "id": "10",
+      "slug": "trino_catalog_discovery",
+      "name": "Trino catalog discovery",
+      "executor": "trino_file",
+      "path": "/tmp/sql/scenarios/01_catalog_discovery.sql",
+      "airflow": true,
+      "doc": "docs/scenarios/scenario-10-trino-catalog-discovery.md"
+    },
+    {
+      "id": "11",
+      "slug": "trino_business_queries",
+      "name": "Trino business queries",
+      "executor": "trino_file",
+      "path": "/tmp/sql/scenarios/02_business_queries.sql",
+      "airflow": true,
+      "doc": "docs/scenarios/scenario-11-trino-business-queries.md"
+    },
+    {
+      "id": "12",
+      "slug": "trino_sql_assertions",
+      "name": "Trino SQL assertions",
+      "executor": "trino_file",
+      "path": "/tmp/sql/scenarios/03_scenario_assertions.sql",
+      "airflow": true,
+      "doc": "docs/scenarios/scenario-12-trino-sql-assertions.md"
+    },
+    {
+      "id": "13",
+      "slug": "metadata_inspection",
+      "name": "Iceberg metadata inspection through Trino",
+      "executor": "trino_file",
+      "path": "/tmp/sql/scenarios/04_metadata_inspection.sql",
+      "airflow": true,
+      "doc": "docs/scenarios/scenario-13-metadata-inspection.md"
+    },
+    {
+      "id": "14",
+      "slug": "superset_dashboard_validation",
+      "name": "Superset dashboard validation",
+      "executor": "manual",
+      "doc": "docs/scenarios/scenario-14-superset-dashboard-validation.md"
+    },
+    {
+      "id": "15",
+      "slug": "minio_physical_object_inspection",
+      "name": "MinIO physical object inspection",
+      "executor": "manual",
+      "doc": "docs/scenarios/scenario-15-minio-physical-object-inspection.md"
+    },
+    {
+      "id": "16",
+      "slug": "observability_smoke_test",
+      "name": "Observability smoke test",
+      "executor": "manual",
+      "doc": "docs/scenarios/scenario-16-observability-smoke-test.md"
+    },
+    {
+      "id": "17",
+      "slug": "failure_recovery_drill",
+      "name": "Failure and recovery drill",
+      "executor": "manual",
+      "doc": "docs/scenarios/scenario-17-failure-recovery-drill.md"
+    }
+  ]
+}
+

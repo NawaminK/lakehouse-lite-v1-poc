@@ -1,0 +1,5 @@
+{"order_id":1,"customer_id":"C001","order_date":"2026-06-01","province":"Bangkok","amount":1200.50,"status":"paid"}
+{"order_id":2,"customer_id":"C002","order_date":"2026-06-01","province":"Chiang Mai","amount":550.00,"status":"paid"}
+{"order_id":3,"customer_id":"C001","order_date":"2026-06-02","province":"Bangkok","amount":200.00,"status":"refund"}
+{"order_id":4,"customer_id":"C003","order_date":"2026-06-02","province":"Phuket","amount":880.75,"status":"paid"}
+{"order_id":5,"customer_id":"C004","order_date":"2026-06-03","province":"Bangkok","amount":410.20,"status":"paid"}

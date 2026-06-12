@@ -1,0 +1,35 @@
+# Platform and DevEx
+/docker-compose.yml @platform-team
+/Makefile @platform-team
+/.github/ @platform-team
+/infra/ @platform-team
+
+# Lakehouse Core
+/minio/ @lakehouse-core
+/iceberg/ @lakehouse-core
+/trino/ @lakehouse-core
+/trino/etc/ @lakehouse-core
+/sql/ @lakehouse-core @data-engineering
+
+# Spark and Data Engineering
+/spark/ @data-engineering
+/sample-data/ @data-engineering
+
+# Orchestration
+/airflow/ @orchestration-team
+
+# BI
+/superset/ @bi-team
+
+# Monitoring
+/prometheus/ @observability-team
+/monitoring/ @observability-team
+
+# AI and Advanced Analytics
+/ai-assistant/ @ai-team
+
+# Ingestion UX
+/ingestion/ @data-engineering
+
+# Documentation
+/docs/ @platform-team @lakehouse-core @data-engineering

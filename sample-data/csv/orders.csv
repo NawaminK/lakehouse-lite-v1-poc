@@ -1,0 +1,6 @@
+order_id,customer_id,order_date,province,amount,status
+1,C001,2026-06-01,Bangkok,1200.50,paid
+2,C002,2026-06-01,Chiang Mai,550.00,paid
+3,C001,2026-06-02,Bangkok,200.00,refund
+4,C003,2026-06-02,Phuket,880.75,paid
+5,C004,2026-06-03,Bangkok,410.20,paid
