@@ -10,8 +10,6 @@
 
 ```bash
 cp .env.example .env
-export AIRFLOW_UID=$(id -u)
-export DOCKER_GID=$(stat -c '%g' /var/run/docker.sock)
 make up
 make ps
 ```

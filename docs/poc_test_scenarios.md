@@ -13,9 +13,7 @@
 เริ่ม platform ก่อน
 
 ```bash
-export AIRFLOW_UID=$(id -u)
-export DOCKER_GID=$(stat -c '%g' /var/run/docker.sock)
-docker compose up -d --build
+make up
 docker compose ps
 ```
 
@@ -1247,8 +1245,6 @@ docker compose down
 เริ่มใหม่
 
 ```bash
-export AIRFLOW_UID=$(id -u)
-export DOCKER_GID=$(stat -c '%g' /var/run/docker.sock)
-docker compose up -d --build
+make up
 ./scripts/run_all_scenarios.sh
 ```

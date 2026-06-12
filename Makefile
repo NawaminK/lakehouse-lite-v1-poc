@@ -1,4 +1,5 @@
 SHELL := /bin/bash
+DOCKER_SOCK ?= /var/run/docker.sock
 
 .PHONY: help up down ps logs build reset smoke scenarios validate trino spark-create spark-quality superset-shell airflow-logs
 
@@ -18,7 +19,11 @@ help:
 	@echo "  make trino          Open Trino CLI"
 
 up:
-	@export AIRFLOW_UID=$$(id -u); export DOCKER_GID=$$(stat -c '%g' /var/run/docker.sock); docker compose up -d --build
+	@export AIRFLOW_UID="$${AIRFLOW_UID:-$$(id -u)}"; \
+	if [ -z "$${DOCKER_GID:-}" ]; then \
+	  export DOCKER_GID="$$(stat -c '%g' "$(DOCKER_SOCK)" 2>/dev/null || stat -f '%g' "$(DOCKER_SOCK)" 2>/dev/null || echo 999)"; \
+	fi; \
+	docker compose up -d --build
 
 down:
 	docker compose down

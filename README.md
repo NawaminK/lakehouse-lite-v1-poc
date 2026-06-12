@@ -36,8 +36,6 @@ The project has been reorganized for team-based learning and development through
 
 ```bash
 cp .env.example .env
-export AIRFLOW_UID=$(id -u)
-export DOCKER_GID=$(stat -c '%g' /var/run/docker.sock)
 make up
 make ps
 make smoke
@@ -46,6 +44,8 @@ make smoke
 Equivalent raw command:
 
 ```bash
+export AIRFLOW_UID=$(id -u)
+export DOCKER_GID=$(stat -c '%g' /var/run/docker.sock 2>/dev/null || stat -f '%g' /var/run/docker.sock 2>/dev/null || echo 999)
 docker compose up -d --build
 ```
 

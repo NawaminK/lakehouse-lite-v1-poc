@@ -8,8 +8,6 @@ Goal: prove the local platform works and understand the main data path.
 
 ```bash
 cp .env.example .env
-export AIRFLOW_UID=$(id -u)
-export DOCKER_GID=$(stat -c '%g' /var/run/docker.sock)
 make up
 make ps
 make smoke
@@ -84,4 +82,3 @@ python -m unittest discover -s ai-assistant/tests
 ```
 
 Use `docs/engineering/definition-of-done.md` to self-review.
-

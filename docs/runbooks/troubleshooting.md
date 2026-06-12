@@ -96,6 +96,6 @@ The POC Airflow DAGs use Docker socket access. Ensure these variables are set be
 
 ```bash
 export AIRFLOW_UID=$(id -u)
-export DOCKER_GID=$(stat -c '%g' /var/run/docker.sock)
+export DOCKER_GID=$(stat -c '%g' /var/run/docker.sock 2>/dev/null || stat -f '%g' /var/run/docker.sock 2>/dev/null || echo 999)
 docker compose up -d airflow
 ```
