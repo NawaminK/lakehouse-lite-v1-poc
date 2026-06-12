@@ -7,7 +7,22 @@ MANIFEST="${ROOT_DIR}/scenarios.json"
 SPARK=(docker compose exec -T spark-iceberg spark-submit)
 TRINO=(docker compose exec -T trino trino --server http://localhost:8080)
 
-mapfile -t RUNNABLE_SCENARIOS < <(
+while IFS=$'\t' read -r -u 3 id name executor path; do
+  echo "[${id}] ${name}"
+
+  case "$executor" in
+    spark)
+      "${SPARK[@]}" "$path" </dev/null
+      ;;
+    trino_file)
+      "${TRINO[@]}" --file "$path" </dev/null
+      ;;
+    *)
+      echo "ERROR: Unsupported scenario executor: ${executor}" >&2
+      exit 1
+      ;;
+  esac
+done 3< <(
   python3 - "$MANIFEST" <<'PY'
 import json
 import sys
@@ -30,23 +45,5 @@ for scenario in manifest["scenarios"]:
     )
 PY
 )
-
-for scenario in "${RUNNABLE_SCENARIOS[@]}"; do
-  IFS=$'\t' read -r id name executor path <<< "$scenario"
-  echo "[${id}] ${name}"
-
-  case "$executor" in
-    spark)
-      "${SPARK[@]}" "$path"
-      ;;
-    trino_file)
-      "${TRINO[@]}" --file "$path"
-      ;;
-    *)
-      echo "ERROR: Unsupported scenario executor: ${executor}" >&2
-      exit 1
-      ;;
-  esac
-done
 
 echo "All POC scenarios completed."

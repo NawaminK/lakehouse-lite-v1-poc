@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import ast
 import json
+import subprocess
 import sys
 from pathlib import Path
 from typing import Optional
@@ -38,9 +39,22 @@ def check_required_files() -> None:
 
 def check_generated_files() -> None:
     offenders = []
-    for path in ROOT.rglob("*"):
-        if ".git" in path.parts:
-            continue
+    try:
+        result = subprocess.run(
+            ["git", "ls-files", "-z"],
+            cwd=ROOT,
+            check=True,
+            capture_output=True,
+        )
+        paths = [
+            ROOT / path.decode("utf-8")
+            for path in result.stdout.split(b"\0")
+            if path
+        ]
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        paths = [path for path in ROOT.rglob("*") if ".git" not in path.parts]
+
+    for path in paths:
         if path.name in GENERATED_NAMES or path.suffix in GENERATED_SUFFIXES:
             offenders.append(path.relative_to(ROOT).as_posix())
 
