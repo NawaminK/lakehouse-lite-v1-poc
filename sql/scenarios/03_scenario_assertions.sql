@@ -1,8 +1,8 @@
 -- Scenario SQL 03 - Lightweight SQL assertions
--- Result should show PASS for each row when scenarios have run successfully.
+-- Result shows PASS for each row when scenarios have run successfully.
+-- Any failed assertion raises a Trino error so automation exits non-zero.
 
-SELECT check_name, result, actual
-FROM (
+WITH checks AS (
   SELECT
     'gold.daily_sales has rows' AS check_name,
     CASE WHEN c > 0 THEN 'PASS' ELSE 'FAIL' END AS result,
@@ -80,9 +80,29 @@ FROM (
 
   SELECT
     'backfill Bangkok refund adjusted = 280.00' AS check_name,
-    CASE WHEN net_sales = DECIMAL '280.00' AND order_count = 3 THEN 'PASS' ELSE 'FAIL' END AS result,
-    CAST(net_sales AS VARCHAR) || ', orders=' || CAST(order_count AS VARCHAR) AS actual
-  FROM iceberg.scenarios.daily_sales_backfill
-  WHERE order_dt = DATE '2026-06-10' AND province = 'Bangkok'
-) checks
+    CASE WHEN matched_rows = 1 AND net_sales = DECIMAL '280.00' AND order_count = 3 THEN 'PASS' ELSE 'FAIL' END AS result,
+    'rows=' || CAST(matched_rows AS VARCHAR)
+      || ', net_sales=' || COALESCE(CAST(net_sales AS VARCHAR), 'NULL')
+      || ', orders=' || COALESCE(CAST(order_count AS VARCHAR), 'NULL') AS actual
+  FROM (
+    SELECT
+      COUNT(*) AS matched_rows,
+      CAST(MAX(net_sales) AS DECIMAL(12,2)) AS net_sales,
+      MAX(order_count) AS order_count
+    FROM iceberg.scenarios.daily_sales_backfill
+    WHERE order_dt = DATE '2026-06-10' AND province = 'Bangkok'
+  ) AS x
+),
+enforced AS (
+  SELECT
+    check_name,
+    CASE
+      WHEN result = 'PASS' THEN result
+      ELSE fail('SQL assertion failed: ' || check_name || '; actual=' || COALESCE(actual, 'NULL'))
+    END AS result,
+    actual
+  FROM checks
+)
+SELECT check_name, result, actual
+FROM enforced
 ORDER BY check_name;

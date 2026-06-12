@@ -11,5 +11,5 @@ docker compose exec trino trino --server http://localhost:8080 --file /tmp/sql/s
 Pass criteria:
 
 - Every row in the assertion result has `PASS`.
+- The SQL file exits non-zero when any assertion fails.
 - Backfill totals and CDC counts match expected values.
-

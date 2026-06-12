@@ -835,14 +835,14 @@ sql/scenarios/03_scenario_assertions.sql
 
 ## Expected result
 
-ทุก row ควรเป็น `PASS`
+ทุก row ควรเป็น `PASS` และ SQL file จะ exit non-zero ถ้ามี assertion ใด fail
 
 ```text
 check_name                              result  actual
 active customers after CDC merge = 3    PASS    3
 backfill gold aggregate rows = 4        PASS    4
 backfill total net_sales = 670.00       PASS    670.00
-backfill Bangkok refund adjusted = 280.00 PASS  280.00, orders=3
+backfill Bangkok refund adjusted = 280.00 PASS  rows=1, net_sales=280.00, orders=3
 maintenance demo rows = 10              PASS    10
 partitioned table rows = 5              PASS    5
 schema evolution row count = 6          PASS    6
@@ -852,6 +852,7 @@ time travel current table rows = 4      PASS    4
 ## Pass criteria
 
 - ทุก assertion เป็น PASS
+- ถ้ามี assertion ใดเป็น FAIL คำสั่ง Trino ต้อง exit non-zero เพื่อให้ automation หยุดทันที
 
 ## สิ่งที่ต้องสังเกต
 
