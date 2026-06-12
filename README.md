@@ -13,6 +13,8 @@ MinIO S3-compatible storage
   -> Airflow orchestration
   -> Prometheus/Grafana/cAdvisor monitoring
 ```
+# Architecture
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/a13209ca-ed0d-40dd-bc52-45ac34d32fee" />
 
 The project has been reorganized for team-based learning and development through GitHub issues, pull requests, CODEOWNERS, and CI checks.
 
