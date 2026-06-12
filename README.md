@@ -16,6 +16,15 @@ MinIO S3-compatible storage
 
 The project has been reorganized for team-based learning and development through GitHub issues, pull requests, CODEOWNERS, and CI checks.
 
+## New to lakehouse?
+
+Start with these docs before diving into commands:
+
+1. `docs/learning/plain-language-guide.md` explains the project in everyday language.
+2. `docs/learning/glossary.md` defines the main terms used across the repo.
+3. `docs/README.md` shows the full documentation map.
+4. `docs/references.md` links each topic to official documentation for deeper study.
+
 ## Service URLs
 
 | Service | URL | Default credential |
@@ -141,6 +150,8 @@ Start here:
 ```text
 CONTRIBUTING.md
 docs/README.md
+docs/learning/plain-language-guide.md
+docs/learning/glossary.md
 docs/learning/onboarding-journey.md
 docs/team-roadmap.md
 docs/github-workflow.md

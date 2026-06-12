@@ -2,6 +2,29 @@
 
 This guide turns the learning paths into a practical route for a new teammate.
 
+It assumes curiosity, not prior lakehouse experience. If the terms are new, read these first:
+
+- `docs/learning/plain-language-guide.md`
+- `docs/learning/glossary.md`
+- `docs/references.md`
+
+## Before Day 1: Build the mental model
+
+Goal: understand what the project is trying to teach before starting containers.
+
+Read:
+
+1. `README.md`
+2. `docs/learning/plain-language-guide.md`
+3. `docs/architecture/system-overview.md`
+4. `docs/learning/glossary.md`
+
+Expected learning outcome:
+
+- You can describe the project as a local data platform POC.
+- You know that Spark writes tables, Iceberg tracks table metadata, MinIO stores files, Trino serves SQL, Superset visualizes data, and Airflow orchestrates jobs.
+- You know where to find official references when a tool or term is unfamiliar.
+
 ## Day 1: Run and observe the baseline
 
 Goal: prove the local platform works and understand the main data path.

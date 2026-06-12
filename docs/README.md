@@ -2,6 +2,18 @@
 
 Start here if you are new to the project.
 
+## Beginner reading path
+
+Use this path if you are new to lakehouse or data platform work:
+
+1. `docs/learning/plain-language-guide.md`
+2. `docs/learning/glossary.md`
+3. `README.md`
+4. `docs/architecture/system-overview.md`
+5. `docs/learning/onboarding-journey.md`
+6. `docs/scenarios/index.md`
+7. `docs/references.md`
+
 ## Fast path
 
 1. Read `README.md`.
@@ -28,6 +40,8 @@ Start here if you are new to the project.
 
 ## Learning
 
+- `docs/learning/plain-language-guide.md`
+- `docs/learning/glossary.md`
 - `docs/learning/onboarding-journey.md`
 - `docs/learning/lakehouse-learning-path.md`
 - `docs/learning/platform-learning-path.md`
