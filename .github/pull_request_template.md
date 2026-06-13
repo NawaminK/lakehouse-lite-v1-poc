@@ -1,31 +1,31 @@
 ## Summary
-Describe what this PR changes and why.
+Describe what changed and why.
 
-## Related Issue
-Closes #
+## Requirement / Issue
+- Requirement ID:
+- Closes #
 
-## Changed Areas
-- [ ] Platform / Docker Compose
-- [ ] Lakehouse Core / Iceberg / Trino / MinIO
-- [ ] Spark / Data Engineering
-- [ ] Airflow / Orchestration
-- [ ] Superset / BI
-- [ ] Monitoring
-- [ ] AI Assistant
-- [ ] Ingestion UX
-- [ ] Documentation
+## Team / Area
+- [ ] Team A: Platform + Observability
+- [ ] Team B: Lakehouse Core + Data Engineering
+- [ ] Team C: Orchestration + BI
+- [ ] Team D: AI + Ingestion UX
+- [ ] Documentation only
 
-## Test Evidence
-Paste the exact commands and output used to validate the change.
+## Validation Evidence
+Paste exact commands, output summaries, screenshots, or notes.
 
 ```bash
-make smoke
+make validate
 ```
 
-## Risk
+## Documentation
+- [ ] Updated
+- [ ] Not needed; explain:
+
+## Risk And Rollback
 - [ ] Low
 - [ ] Medium
 - [ ] High
 
-## Rollback Plan
-Explain how to revert this safely if it breaks the POC.
+Rollback plan:

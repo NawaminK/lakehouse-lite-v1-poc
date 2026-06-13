@@ -1,8 +1,18 @@
 # GitHub Workflow
 
-## Branching
+Use GitHub as the execution layer: issues define work, the Project Board shows status, pull requests carry review and validation evidence.
 
-Use short-lived branches:
+## Flow
+
+1. Pick an issue from the [Project Board](https://github.com/users/NawaminK/projects/3).
+2. Confirm the requirement ID in `docs/requirements.md`.
+3. Create a short-lived branch.
+4. Make a small change.
+5. Run the narrowest useful validation.
+6. Open a PR using `.github/pull_request_template.md`.
+7. Move the issue through Todo -> In Progress -> Done.
+
+## Branches
 
 ```text
 feature/<team>/<short-description>
@@ -13,46 +23,41 @@ experiment/<team>/<short-description>
 Examples:
 
 ```text
-feature/data/csv-ingestion-template
-feature/bi/superset-dashboard-v1
-feature/ai/trino-readonly-api
-bugfix/platform/superset-trino-driver
-experiment/lakehouse/polaris-catalog
+feature/team-b/csv-ingestion-template
+feature/team-c/superset-dashboard-v1
+bugfix/team-a/service-readiness
+experiment/team-d/hop-pipeline-note
 ```
 
-## Pull request rules
+## Pull Request Expectations
 
-Every change must enter through a pull request. The pull request must include:
+Every PR should include:
 
-1. Objective.
-2. Changed files or components.
-3. Test command and result.
-4. Screenshot or log if the change affects UI/runtime behavior.
-5. Linked issue.
-6. Rollback plan.
+- Linked issue.
+- Requirement ID or exploratory note.
+- Team/area.
+- Validation evidence.
+- Documentation impact.
+- Risk and rollback plan.
 
-## Main branch protection
+## Branch Protection Recommendation
 
-Recommended branch protection rules for `main`:
+Recommended rules for `main`:
 
-- Do not allow direct push.
 - Require pull request before merge.
 - Require at least one approving review.
-- Require CI status check to pass.
-- Do not allow force push.
+- Require CI status checks to pass.
+- Do not allow force pushes.
+- Delete branches after merge.
 
 ## CODEOWNERS
 
-`CODEOWNERS` maps folder ownership to teams. Replace placeholder owners such as `@platform-team` with real GitHub teams after the repository is created.
+`CODEOWNERS` maps folders to team owners. Replace placeholder owners such as `@platform-team` with real GitHub teams when they exist.
 
-## Definition of done
+## Done Means
 
-A pull request is done when:
-
-- The code is in the correct folder.
-- Documentation is updated if behavior changed.
-- A repeatable test command is provided.
-- No new secret is committed.
-- Baseline POC still works.
-- Required reviewers have approved.
-- CI passes.
+- The issue acceptance criteria are met.
+- The related requirement is still accurate.
+- Validation evidence is in the PR.
+- Docs are updated when behavior changes.
+- CI passes and required reviewers approve.

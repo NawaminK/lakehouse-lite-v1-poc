@@ -16,8 +16,12 @@ Requirement ID from `docs/requirements.md`, or explain why this is exploratory.
 - [ ] In scope
 - [ ] Out of scope
 
-## Component
-Team A Platform + Observability / Team B Lakehouse Core + Data Engineering / Team C Orchestration + BI / Team D AI + Ingestion UX
+## Team / Area
+- [ ] Team A: Platform + Observability
+- [ ] Team B: Lakehouse Core + Data Engineering
+- [ ] Team C: Orchestration + BI
+- [ ] Team D: AI + Ingestion UX
+- [ ] Exploratory / unclear
 
 ## Acceptance Criteria
 - [ ] Documented

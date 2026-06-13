@@ -1,18 +1,23 @@
 # Contributing
 
-This POC is designed as a team learning project. Keep changes small, documented, and easy to verify.
+This POC is a team learning project. Keep changes small, linked to an issue, and easy to verify.
 
-## First-time setup
+## Start
 
 ```bash
 cp .env.example .env
-export AIRFLOW_UID=$(id -u)
-export DOCKER_GID=$(stat -c '%g' /var/run/docker.sock)
 make up
 make smoke
 ```
 
-If `make smoke` fails, check `docs/runbooks/troubleshooting.md` before changing code.
+If setup fails, check `docs/runbooks/troubleshooting.md` before changing code.
+
+## Pick Work
+
+1. Choose an issue from the [Project Board](https://github.com/users/NawaminK/projects/3).
+2. Read the related requirement in `docs/requirements.md`.
+3. Read your team path in `docs/team-getting-started.md`.
+4. Move the issue to In Progress.
 
 ## Branches
 
@@ -27,40 +32,45 @@ experiment/<team>/<short-description>
 Examples:
 
 ```text
-feature/data/csv-ingestion-template
-feature/bi/dashboard-v1
-bugfix/platform/trino-catalog-config
+feature/team-b/csv-ingestion-template
+feature/team-c/dashboard-v1
+bugfix/team-a/trino-readiness
+experiment/team-d/nifi-ingestion-note
 ```
 
-## Before opening a PR
+## Pull Requests
 
-Run the narrowest useful test plus the baseline smoke test when practical:
+Every PR should include:
+
+- Linked issue and requirement ID.
+- Team/area checkbox.
+- Narrow validation evidence.
+- Documentation update or reason it was not needed.
+- Risk and rollback plan.
+
+Use:
+
+- `.github/pull_request_template.md`
+- `docs/engineering/definition-of-done.md`
+- `docs/github-workflow.md`
+
+## Validation
+
+Run the narrowest useful check:
 
 ```bash
+make validate
 make smoke
 make scenarios
 python -m unittest discover -s ai-assistant/tests
 ```
 
-For documentation-only changes, explain why runtime validation was not needed.
+For docs-only changes, `make validate` is usually enough.
 
-## Pull request expectations
+## Ground Rules
 
-Every PR should include:
-
-- Objective and changed areas.
-- Test command and result.
-- Screenshot or log evidence for UI/runtime behavior.
-- Rollback plan.
-- Documentation updates when behavior changes.
-
-Use `docs/engineering/definition-of-done.md` as the review checklist.
-
-## Coding guidelines
-
-- Prefer existing helpers such as `spark/jobs/common.py`.
-- Keep POC examples readable before making them clever.
-- Put reusable patterns in templates or docs, not only in one-off scripts.
 - Do not commit secrets, generated caches, `.DS_Store`, or local warehouse data.
-- Keep Spark responsible for Iceberg writes; use Trino for SQL serving and Superset/AI consumption.
-
+- Prefer existing helpers before adding new patterns.
+- Keep Spark responsible for Iceberg writes.
+- Use Trino for SQL serving and Superset/AI consumption.
+- Update docs when commands, ports, services, or behavior change.

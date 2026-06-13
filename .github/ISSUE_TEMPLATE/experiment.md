@@ -9,6 +9,9 @@ assignees: ''
 ## Hypothesis
 What are we trying to learn?
 
+## Team / Requirement
+Team owner and related requirement ID, or explain why this is exploratory.
+
 ## Experiment Design
 What will be changed or measured?
 

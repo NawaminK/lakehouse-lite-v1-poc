@@ -21,8 +21,14 @@ Describe the bug.
 ## Logs / Screenshots
 Paste logs or attach screenshots.
 
-## Suspected Component
-Platform / Lakehouse / Spark / Airflow / Superset / Monitoring / AI / Ingestion
+## Suspected Team / Area
+Team A Platform + Observability / Team B Lakehouse Core + Data Engineering / Team C Orchestration + BI / Team D AI + Ingestion UX
+
+## Requirement
+Requirement ID if known, or `unknown`.
+
+## Validation Command
+Command that reproduces or verifies the issue.
 
 ## Workaround
 If any.
