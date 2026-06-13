@@ -1,50 +1,106 @@
 # Lakehouse Lite v1 POC
 
-This repository is a single-node, open-source Lakehouse POC for Ubuntu 24.04 and Docker Compose.
+Lakehouse Lite is a single-node, open-source lakehouse proof of concept for Ubuntu 24.04 and Docker Compose. It is designed for learning how a modern data platform works end to end: local storage, table metadata, data engineering jobs, SQL serving, dashboards, orchestration, monitoring, and optional AI-assisted querying.
 
-Core data path:
+This repository is also organized as a team learning project. New teammates can start from the plain-language docs, choose a team track, run the local stack, and make small pull requests with clear validation evidence.
+
+## Table Of Contents
+
+- [What This Project Does](#what-this-project-does)
+- [Architecture At A Glance](#architecture-at-a-glance)
+- [Core Capabilities](#core-capabilities)
+- [Start Here](#start-here)
+- [Quick Start](#quick-start)
+- [Service URLs](#service-urls)
+- [Common Workflows](#common-workflows)
+- [Team Learning Tracks](#team-learning-tracks)
+- [Repository Structure](#repository-structure)
+- [Documentation Map](#documentation-map)
+- [Cleanup](#cleanup)
+
+## What This Project Does
+
+This POC shows how raw business data becomes trusted analytics output:
+
+1. Source files land in the repository as sample data.
+2. Spark reads and transforms the data into bronze, silver, and gold tables.
+3. Apache Iceberg tracks table metadata, schema changes, snapshots, and physical files.
+4. MinIO stores Iceberg data and metadata through an S3-compatible interface.
+5. Trino queries Iceberg tables with SQL.
+6. Superset connects to Trino for BI exploration and dashboards.
+7. Airflow orchestrates jobs and validation steps.
+8. Prometheus, Grafana, and cAdvisor expose local platform health signals.
+9. The optional AI Assistant exposes a guarded, read-only SQL query API.
+
+Use this project when you want to learn or demonstrate:
+
+- Lakehouse architecture on one machine.
+- Spark -> Iceberg -> Trino data flow.
+- Bronze/silver/gold data engineering patterns.
+- SQL assertions and scenario-based validation.
+- Airflow orchestration and Superset dashboard setup.
+- Basic observability with Prometheus and Grafana.
+- Safe read-only query access for AI experiments.
+- Team-based development with GitHub issues, PRs, CODEOWNERS, and CI checks.
+
+## Architecture At A Glance
 
 ```text
-MinIO S3-compatible storage
-  -> Apache Iceberg REST Catalog
-  -> Spark writes Iceberg tables
-  -> Trino queries Iceberg tables
+Source data
+  -> Spark jobs
+  -> Apache Iceberg tables
+  -> MinIO S3-compatible storage
+  -> Trino SQL serving
   -> Superset dashboards
   -> Airflow orchestration
   -> Prometheus/Grafana/cAdvisor monitoring
+  -> Optional AI Assistant read-only query API
 ```
-# Architecture
-<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/a13209ca-ed0d-40dd-bc52-45ac34d32fee" />
 
-The project has been reorganized for team-based learning and development through GitHub issues, pull requests, CODEOWNERS, and CI checks.
+<img width="1536" height="1024" alt="Lakehouse Lite architecture" src="https://github.com/user-attachments/assets/a13209ca-ed0d-40dd-bc52-45ac34d32fee" />
 
-## New to lakehouse?
+Read more:
 
-Start with these docs before diving into commands:
+- [System overview](docs/architecture/system-overview.md)
+- [Data flow](docs/architecture/data-flow.md)
+- [Component responsibility](docs/architecture/component-responsibility.md)
+- [Naming conventions](docs/architecture/naming-conventions.md)
+- [Plain-language guide](docs/learning/plain-language-guide.md)
 
-1. `docs/learning/plain-language-guide.md` explains the project in everyday language.
-2. `docs/learning/glossary.md` defines the main terms used across the repo.
-3. `docs/README.md` shows the full documentation map.
-4. `docs/team-getting-started.md` explains Team A-D learning paths.
-5. `docs/references.md` links each topic to official documentation for deeper study.
+## Core Capabilities
 
-## Service URLs
-
-| Service | URL | Default credential |
+| Area | What it proves | Start here |
 |---|---|---|
-| MinIO API | http://localhost:9000 | none |
-| MinIO Console | http://localhost:9001 | admin / password |
-| Iceberg REST Catalog | http://localhost:8181 | none |
-| Spark/Jupyter | http://localhost:8888 | check logs if token is required |
-| Trino | http://localhost:8080 | none |
-| Superset | http://localhost:8088 | admin / admin |
-| Airflow | http://localhost:8081 | admin / admin |
-| Prometheus | http://localhost:9090 | none |
-| Grafana | http://localhost:3000 | admin / admin |
-| cAdvisor | http://localhost:8090 | none |
-| AI Assistant, optional | http://localhost:8010 | none |
+| Local platform | Docker Compose can run the full POC stack locally | [Startup and shutdown runbook](docs/runbooks/startup-shutdown.md) |
+| Lakehouse storage | MinIO + Iceberg can store table data and metadata | [Lakehouse learning path](docs/learning/lakehouse-learning-path.md) |
+| Data engineering | Spark can build bronze, silver, and gold tables | [Spark data engineering path](docs/learning/spark-data-engineering-learning-path.md) |
+| SQL serving | Trino can query Iceberg tables and metadata | [Trino validation SQL](sql/trino_validation.sql) |
+| Data quality | Spark checks and SQL assertions can catch bad outputs | [Scenario assertions](docs/scenarios/scenario-12-trino-sql-assertions.md) |
+| Orchestration | Airflow can run jobs and validation in sequence | [Airflow learning path](docs/learning/airflow-learning-path.md) |
+| BI | Superset can connect to Trino and inspect gold tables | [Superset connection runbook](docs/runbooks/superset-trino-connection.md) |
+| Observability | Prometheus, Grafana, and cAdvisor expose platform signals | [Observability learning path](docs/learning/observability-learning-path.md) |
+| AI query API | A small API can enforce read-only SQL access through Trino | [AI Assistant README](ai-assistant/README.md) |
+| Team learning | Four teams can learn and improve the platform safely | [Team getting started](docs/team-getting-started.md) |
 
-## Quick start
+## Start Here
+
+If you are new to lakehouse or data platform work:
+
+1. Read [Plain-language guide](docs/learning/plain-language-guide.md).
+2. Use the [Glossary](docs/learning/glossary.md) when a term is unfamiliar.
+3. Follow the [Documentation index](docs/README.md).
+4. Review the [System overview](docs/architecture/system-overview.md).
+5. Choose a team path from [Team getting started](docs/team-getting-started.md).
+6. Use [References](docs/references.md) for official docs by topic.
+
+If you want to run the POC immediately:
+
+1. Follow [Quick Start](#quick-start).
+2. Run [Baseline validation](#baseline-validation).
+3. Try [Extended POC scenarios](#extended-poc-scenarios).
+4. Use [Troubleshooting](docs/runbooks/troubleshooting.md) if a service fails.
+
+## Quick Start
 
 ```bash
 cp .env.example .env
@@ -61,7 +117,7 @@ export DOCKER_GID=$(stat -c '%g' /var/run/docker.sock 2>/dev/null || stat -f '%g
 docker compose up -d --build
 ```
 
-## Common commands
+Common commands:
 
 ```bash
 make help
@@ -75,7 +131,27 @@ make validate
 make reset
 ```
 
-## Baseline validation
+## Service URLs
+
+| Service | URL | Default credential | Related docs |
+|---|---|---|---|
+| MinIO API | http://localhost:9000 | none | [Lakehouse learning path](docs/learning/lakehouse-learning-path.md) |
+| MinIO Console | http://localhost:9001 | admin / password | [MinIO inspection scenario](docs/scenarios/scenario-15-minio-physical-object-inspection.md) |
+| Iceberg REST Catalog | http://localhost:8181 | none | [Component responsibility](docs/architecture/component-responsibility.md) |
+| Spark/Jupyter | http://localhost:8888 | check logs if token is required | [Spark learning path](docs/learning/spark-data-engineering-learning-path.md) |
+| Trino | http://localhost:8080 | none | [Lakehouse learning path](docs/learning/lakehouse-learning-path.md) |
+| Superset | http://localhost:8088 | admin / admin | [Superset runbook](docs/runbooks/superset-trino-connection.md) |
+| Airflow | http://localhost:8081 | admin / admin | [Airflow learning path](docs/learning/airflow-learning-path.md) |
+| Prometheus | http://localhost:9090 | none | [Observability learning path](docs/learning/observability-learning-path.md) |
+| Grafana | http://localhost:3000 | admin / admin | [Observability smoke test](docs/scenarios/scenario-16-observability-smoke-test.md) |
+| cAdvisor | http://localhost:8090 | none | [Service health checklist](docs/runbooks/service-health-checklist.md) |
+| AI Assistant, optional | http://localhost:8010 | none | [AI Assistant README](ai-assistant/README.md) |
+
+## Common Workflows
+
+### Baseline Validation
+
+Create tables, run quality checks, and query the business output:
 
 ```bash
 make spark-create
@@ -83,9 +159,15 @@ make spark-quality
 docker compose exec trino trino --server http://localhost:8080 --catalog iceberg --schema gold --execute "SELECT * FROM daily_sales ORDER BY order_dt, province"
 ```
 
-## Superset connection
+Related docs:
 
-Use this URI first:
+- [Data flow](docs/architecture/data-flow.md)
+- [Lakehouse learning path](docs/learning/lakehouse-learning-path.md)
+- [Spark data engineering path](docs/learning/spark-data-engineering-learning-path.md)
+
+### Superset
+
+Use this connection URI:
 
 ```text
 trino://admin@trino:8080/iceberg
@@ -93,28 +175,28 @@ trino://admin@trino:8080/iceberg
 
 Then select schema `gold` and table `daily_sales`.
 
-If the Trino driver has issues, see:
+Related docs:
 
-```text
-docs/runbooks/superset-trino-connection.md
-```
+- [Superset-Trino connection runbook](docs/runbooks/superset-trino-connection.md)
+- [Superset learning path](docs/learning/superset-learning-path.md)
+- [Superset dashboard validation scenario](docs/scenarios/scenario-14-superset-dashboard-validation.md)
 
-## Airflow
+### Airflow
 
 Open http://localhost:8081 and trigger:
 
 - `lakehouse_v1_poc`
 - `lakehouse_v1_poc_scenarios`
 
-This POC uses Docker socket access from Airflow. This is convenient for local POC work but is not a production security pattern.
+This POC uses Docker socket access from Airflow. This is convenient for local POC work but is not a production security pattern. See [POC vs production security](docs/security/poc-vs-production.md).
 
-## Extended POC scenarios
+Related docs:
 
-Detailed scenario documentation:
+- [Airflow learning path](docs/learning/airflow-learning-path.md)
+- [Airflow DAG standards](docs/engineering/airflow-dag-standards.md)
+- [Startup and shutdown runbook](docs/runbooks/startup-shutdown.md)
 
-```text
-docs/poc_test_scenarios.md
-```
+### Extended POC Scenarios
 
 Run all scenarios:
 
@@ -122,9 +204,15 @@ Run all scenarios:
 make scenarios
 ```
 
-Scenario coverage includes base pipeline, data quality, schema evolution, CDC upsert, time travel, partition/file layout, expected failure, Iceberg maintenance, late-arriving backfill, Trino assertions, metadata inspection, Superset validation, MinIO inspection, observability, and recovery drill.
+Scenario coverage includes platform health, base pipeline, data quality, schema evolution, CDC upsert, time travel, partition/file layout, expected failure, Iceberg maintenance, late-arriving backfill, Trino assertions, metadata inspection, Superset validation, MinIO inspection, observability, and recovery drill.
 
-## Optional AI query API
+Related docs:
+
+- [Scenario index](docs/scenarios/index.md)
+- [POC test scenarios](docs/poc_test_scenarios.md)
+- [Trino SQL assertions](docs/scenarios/scenario-12-trino-sql-assertions.md)
+
+### Optional AI Query API
 
 Start the AI Assistant profile:
 
@@ -140,55 +228,62 @@ curl -X POST http://localhost:8010/query \
   -d '{"sql":"SELECT province, SUM(net_sales) AS total_net_sales FROM daily_sales GROUP BY province ORDER BY total_net_sales DESC"}'
 ```
 
-See:
+Related docs:
 
-```text
-ai-assistant/README.md
-```
+- [AI Assistant README](ai-assistant/README.md)
+- [AI learning path](docs/learning/ai-learning-path.md)
+- [POC vs production security](docs/security/poc-vs-production.md)
 
-## Team-based development
+## Team Learning Tracks
 
-Start here:
+| Team | Focus | Getting started |
+|---|---|---|
+| Team A: Platform + Observability | Docker Compose, Makefile, readiness checks, Prometheus, Grafana, cAdvisor | [Team A guide](docs/team-getting-started.md#team-a-platform--observability) |
+| Team B: Lakehouse Core + Data Engineering | MinIO, Iceberg, Spark, Trino, bronze/silver/gold, quality checks | [Team B guide](docs/team-getting-started.md#team-b-lakehouse-core--data-engineering) |
+| Team C: Orchestration + BI | Airflow, backfills, Superset datasets, dashboards | [Team C guide](docs/team-getting-started.md#team-c-orchestration--bi) |
+| Team D: AI + Ingestion UX | Read-only query API, SQL guardrails, NiFi/Hop experiments | [Team D guide](docs/team-getting-started.md#team-d-ai--ingestion-ux) |
 
-```text
-CONTRIBUTING.md
-docs/README.md
-docs/learning/plain-language-guide.md
-docs/learning/glossary.md
-docs/learning/onboarding-journey.md
-docs/team-getting-started.md
-docs/team-roadmap.md
-docs/github-workflow.md
-docs/references.md
-docs/learning/
-docs/runbooks/
-```
+Team docs:
 
-Recommended teams:
+- [Team getting started](docs/team-getting-started.md)
+- [Team roadmap](docs/team-roadmap.md)
+- [Starter backlog](docs/backlog/README.md)
+- [GitHub workflow](docs/github-workflow.md)
+- [Definition of Done](docs/engineering/definition-of-done.md)
 
-1. Team A: Platform + Observability.
-2. Team B: Lakehouse Core + Data Engineering.
-3. Team C: Orchestration + BI.
-4. Team D: AI + Ingestion UX.
+## Repository Structure
 
-## Repository map
+| Path | Purpose |
+|---|---|
+| `.github/` | GitHub workflow, templates, CODEOWNERS |
+| `infra/scripts/` | POC automation and readiness scripts |
+| `docs/` | Architecture, runbooks, learning paths, roadmap, references |
+| `spark/jobs/` | Spark ETL jobs and scenario jobs |
+| `trino/etc/` | Trino configuration and Iceberg catalog config |
+| `sql/` | Trino validation and scenario SQL |
+| `airflow/dags/` | Airflow DAGs |
+| `superset/` | Superset image and BI setup notes |
+| `prometheus/` | Prometheus configuration |
+| `monitoring/` | Monitoring docs and future dashboards |
+| `ai-assistant/` | Optional read-only Trino query API |
+| `ingestion/` | Optional NiFi/Hop ingestion experiments |
+| `sample-data/` | Sample source data |
+| `scenarios.json` | Scenario manifest used by shell and Airflow |
 
-```text
-.github/              GitHub workflow, templates, CODEOWNERS
-infra/scripts/        POC automation scripts
-docs/                 Architecture, runbooks, learning path, roadmap
-spark/jobs/           Spark ETL and scenario jobs
-trino/etc/            Trino configuration
-sql/                  Trino validation and scenario SQL
-airflow/dags/         Airflow DAGs
-superset/             Superset image and BI notes
-prometheus/           Prometheus config
-monitoring/           Monitoring docs and future dashboards
-ai-assistant/         Optional read-only Trino query API
-ingestion/            Optional NiFi/Hop experiments
-sample-data/          Sample source data
-scenarios.json        Scenario manifest used by shell and Airflow
-```
+## Documentation Map
+
+| Topic | Link |
+|---|---|
+| Full docs index | [docs/README.md](docs/README.md) |
+| Beginner explanation | [Plain-language guide](docs/learning/plain-language-guide.md) |
+| Terms and vocabulary | [Glossary](docs/learning/glossary.md) |
+| New teammate route | [Onboarding journey](docs/learning/onboarding-journey.md) |
+| Architecture | [System overview](docs/architecture/system-overview.md) |
+| Data movement | [Data flow](docs/architecture/data-flow.md) |
+| Operations | [Runbooks](docs/runbooks/startup-shutdown.md) |
+| Scenarios | [Scenario index](docs/scenarios/index.md) |
+| Team project model | [Team getting started](docs/team-getting-started.md) |
+| External learning links | [References](docs/references.md) |
 
 ## Cleanup
 
