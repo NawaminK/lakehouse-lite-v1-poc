@@ -7,6 +7,7 @@ Use this page when you want to go deeper than the local POC docs. Prefer officia
 | If you are asking... | Start with local docs | Then read |
 |---|---|---|
 | What is this project? | `docs/learning/plain-language-guide.md` | [Docker Compose](https://docs.docker.com/compose/), [Apache Iceberg](https://iceberg.apache.org/docs/latest/) |
+| What is required for the POC? | `docs/requirements.md` | The matching topic section below |
 | Which team should I join? | `docs/team-getting-started.md` | The matching team reference section below |
 | What does a term mean? | `docs/learning/glossary.md` | The matching topic section below |
 | How does data become a table? | `docs/architecture/data-flow.md` | [Spark SQL and DataFrames](https://spark.apache.org/docs/latest/sql-programming-guide.html), [Iceberg Spark writes](https://iceberg.apache.org/docs/latest/spark-writes/) |

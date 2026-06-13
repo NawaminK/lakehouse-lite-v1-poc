@@ -2,6 +2,14 @@
 
 This document turns the single-node POC into a team-based engineering project. The goal is to make the platform easy to learn, easy to improve, and safe to change through GitHub collaboration.
 
+Planning sources:
+
+- Requirements: `docs/requirements.md`
+- Backlog: `docs/backlog/README.md`
+- Team onboarding: `docs/team-getting-started.md`
+- Project Board: https://github.com/users/NawaminK/projects/3
+- Definition of Done: `docs/engineering/definition-of-done.md`
+
 ## Team project structure
 
 The project uses four cross-functional learning teams. Each team owns a practical part of the POC and has a focused onboarding guide in `docs/team-getting-started.md`.

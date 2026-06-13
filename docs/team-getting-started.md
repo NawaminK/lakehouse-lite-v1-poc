@@ -19,14 +19,16 @@ Read these first:
 2. `docs/learning/plain-language-guide.md`
 3. `docs/learning/glossary.md`
 4. `docs/architecture/system-overview.md`
-5. `docs/github-workflow.md`
-6. `docs/engineering/definition-of-done.md`
+5. `docs/requirements.md`
+6. `docs/github-workflow.md`
+7. `docs/engineering/definition-of-done.md`
 
 Expected shared outcome:
 
 - You can explain the source -> Spark -> Iceberg -> Trino -> Superset path.
 - You know how to start, validate, and reset the local POC.
 - You know which team owns which part of the platform.
+- You know which requirement IDs apply to your first issue.
 - You can open a small pull request with evidence from `make validate` or a focused scenario.
 
 ## Team Map

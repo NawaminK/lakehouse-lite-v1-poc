@@ -18,11 +18,13 @@ Read:
 2. `docs/learning/plain-language-guide.md`
 3. `docs/architecture/system-overview.md`
 4. `docs/learning/glossary.md`
+5. `docs/requirements.md`
 
 Expected learning outcome:
 
 - You can describe the project as a local data platform POC.
 - You know that Spark writes tables, Iceberg tracks table metadata, MinIO stores files, Trino serves SQL, Superset visualizes data, and Airflow orchestrates jobs.
+- You know where project scope, requirement IDs, validation gates, and out-of-scope production concerns are documented.
 - You know where to find official references when a tool or term is unfamiliar.
 
 ## Day 1: Run and observe the baseline

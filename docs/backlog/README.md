@@ -2,6 +2,10 @@
 
 These issues are sized for a team learning the platform. Each item should become a GitHub issue before implementation.
 
+Backlog items are derived from `docs/requirements.md`. When creating or updating an issue, include the relevant requirement ID, team owner, acceptance criteria, and validation evidence.
+
+Current tracking board: https://github.com/users/NawaminK/projects/3
+
 ## Team A: Platform + Observability
 
 Team A owns local runtime, developer workflow, health checks, and monitoring.

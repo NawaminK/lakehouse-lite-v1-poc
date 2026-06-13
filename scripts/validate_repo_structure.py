@@ -15,6 +15,7 @@ REQUIRED_FILES = [
     "README.md",
     "CONTRIBUTING.md",
     "docs/README.md",
+    "docs/requirements.md",
     "docs/team-roadmap.md",
     "docs/github-workflow.md",
     "docs/engineering/definition-of-done.md",

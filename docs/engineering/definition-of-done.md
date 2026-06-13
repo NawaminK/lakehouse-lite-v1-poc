@@ -5,6 +5,7 @@ Use this checklist before review. Not every item applies to every PR, but every 
 ## All changes
 
 - The objective is clear.
+- The related requirement ID from `docs/requirements.md` is included, or the PR explains why the work is exploratory.
 - The changed area is owned by the right workstream.
 - The PR includes test evidence or explains why runtime testing was not required.
 - Documentation is updated when behavior changes.
@@ -58,4 +59,3 @@ Use this checklist before review. Not every item applies to every PR, but every 
 - Guardrail tests cover allowed and blocked examples.
 - New AI behavior logs or returns failures clearly.
 - Production gaps such as authentication, authorization, and audit logging are documented.
-

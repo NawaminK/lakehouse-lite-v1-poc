@@ -10,10 +10,11 @@ Use this path if you are new to lakehouse or data platform work:
 2. `docs/learning/glossary.md`
 3. `README.md`
 4. `docs/architecture/system-overview.md`
-5. `docs/learning/onboarding-journey.md`
-6. `docs/team-getting-started.md`
-7. `docs/scenarios/index.md`
-8. `docs/references.md`
+5. `docs/requirements.md`
+6. `docs/learning/onboarding-journey.md`
+7. `docs/team-getting-started.md`
+8. `docs/scenarios/index.md`
+9. `docs/references.md`
 
 ## Fast path
 
@@ -30,6 +31,13 @@ Use this path if you are new to lakehouse or data platform work:
 - `docs/architecture/data-flow.md`
 - `docs/architecture/component-responsibility.md`
 - `docs/architecture/naming-conventions.md`
+
+## Requirements and planning
+
+- `docs/requirements.md`
+- `docs/team-roadmap.md`
+- `docs/backlog/README.md`
+- GitHub Project Board: https://github.com/users/NawaminK/projects/3
 
 ## Team workflow
 

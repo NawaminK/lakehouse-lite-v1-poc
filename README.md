@@ -9,6 +9,7 @@ This repository is also organized as a team learning project. New teammates can 
 - [What This Project Does](#what-this-project-does)
 - [Architecture At A Glance](#architecture-at-a-glance)
 - [Core Capabilities](#core-capabilities)
+- [Requirements And Planning](#requirements-and-planning)
 - [Start Here](#start-here)
 - [Quick Start](#quick-start)
 - [Service URLs](#service-urls)
@@ -82,6 +83,19 @@ Read more:
 | AI query API | A small API can enforce read-only SQL access through Trino | [AI Assistant README](ai-assistant/README.md) |
 | Team learning | Four teams can learn and improve the platform safely | [Team getting started](docs/team-getting-started.md) |
 
+## Requirements And Planning
+
+Use [Project requirements](docs/requirements.md) as the source of truth for scope, functional requirements, non-functional requirements, validation gates, and traceability to team issues.
+
+Planning links:
+
+- [Project requirements](docs/requirements.md)
+- [Team getting started](docs/team-getting-started.md)
+- [Team roadmap](docs/team-roadmap.md)
+- [Starter backlog](docs/backlog/README.md)
+- [GitHub Project Board](https://github.com/users/NawaminK/projects/3)
+- [Definition of Done](docs/engineering/definition-of-done.md)
+
 ## Start Here
 
 If you are new to lakehouse or data platform work:
@@ -90,8 +104,9 @@ If you are new to lakehouse or data platform work:
 2. Use the [Glossary](docs/learning/glossary.md) when a term is unfamiliar.
 3. Follow the [Documentation index](docs/README.md).
 4. Review the [System overview](docs/architecture/system-overview.md).
-5. Choose a team path from [Team getting started](docs/team-getting-started.md).
-6. Use [References](docs/references.md) for official docs by topic.
+5. Review [Project requirements](docs/requirements.md).
+6. Choose a team path from [Team getting started](docs/team-getting-started.md).
+7. Use [References](docs/references.md) for official docs by topic.
 
 If you want to run the POC immediately:
 
@@ -275,6 +290,7 @@ Team docs:
 | Topic | Link |
 |---|---|
 | Full docs index | [docs/README.md](docs/README.md) |
+| Requirements | [Project requirements](docs/requirements.md) |
 | Beginner explanation | [Plain-language guide](docs/learning/plain-language-guide.md) |
 | Terms and vocabulary | [Glossary](docs/learning/glossary.md) |
 | New teammate route | [Onboarding journey](docs/learning/onboarding-journey.md) |
