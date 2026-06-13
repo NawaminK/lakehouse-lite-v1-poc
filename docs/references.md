@@ -7,6 +7,7 @@ Use this page when you want to go deeper than the local POC docs. Prefer officia
 | If you are asking... | Start with local docs | Then read |
 |---|---|---|
 | What is this project? | `docs/learning/plain-language-guide.md` | [Docker Compose](https://docs.docker.com/compose/), [Apache Iceberg](https://iceberg.apache.org/docs/latest/) |
+| Which team should I join? | `docs/team-getting-started.md` | The matching team reference section below |
 | What does a term mean? | `docs/learning/glossary.md` | The matching topic section below |
 | How does data become a table? | `docs/architecture/data-flow.md` | [Spark SQL and DataFrames](https://spark.apache.org/docs/latest/sql-programming-guide.html), [Iceberg Spark writes](https://iceberg.apache.org/docs/latest/spark-writes/) |
 | How do analysts query the data? | `docs/learning/lakehouse-learning-path.md` | [Trino Iceberg connector](https://trino.io/docs/current/connector/iceberg.html) |
@@ -14,6 +15,15 @@ Use this page when you want to go deeper than the local POC docs. Prefer officia
 | How do dashboards work? | `docs/learning/superset-learning-path.md` | [Apache Superset intro](https://superset.apache.org/docs/intro), [Superset database connections](https://superset.apache.org/docs/configuration/databases) |
 | How do we monitor the platform? | `docs/learning/observability-learning-path.md` | [Prometheus overview](https://prometheus.io/docs/introduction/overview/), [Grafana docs](https://grafana.com/docs/grafana/latest/) |
 | How should a team contribute? | `CONTRIBUTING.md` | [GitHub Pull Requests](https://docs.github.com/articles/about-pull-requests), [GitHub Actions](https://docs.github.com/en/actions) |
+
+## Team Reference Shortcuts
+
+| Team | Local guide | External starting points |
+|---|---|---|
+| Team A: Platform + Observability | `docs/team-getting-started.md#team-a-platform--observability` | [Docker Compose](https://docs.docker.com/compose/), [Prometheus](https://prometheus.io/docs/introduction/overview/), [Grafana](https://grafana.com/docs/grafana/latest/) |
+| Team B: Lakehouse Core + Data Engineering | `docs/team-getting-started.md#team-b-lakehouse-core--data-engineering` | [Apache Iceberg](https://iceberg.apache.org/docs/latest/), [Apache Spark](https://spark.apache.org/docs/latest/), [Trino Iceberg connector](https://trino.io/docs/current/connector/iceberg.html) |
+| Team C: Orchestration + BI | `docs/team-getting-started.md#team-c-orchestration--bi` | [Apache Airflow](https://airflow.apache.org/docs/apache-airflow/stable/), [Apache Superset](https://superset.apache.org/docs/intro), [Trino](https://trino.io/docs/current/) |
+| Team D: AI + Ingestion UX | `docs/team-getting-started.md#team-d-ai--ingestion-ux` | [FastAPI](https://fastapi.tiangolo.com/), [Apache NiFi](https://nifi.apache.org/documentation/), [Apache Hop](https://hop.apache.org/manual/latest/) |
 
 ## Beginner Orientation
 

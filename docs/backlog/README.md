@@ -2,7 +2,9 @@
 
 These issues are sized for a team learning the platform. Each item should become a GitHub issue before implementation.
 
-## Platform and DevEx
+## Team A: Platform + Observability
+
+Team A owns local runtime, developer workflow, health checks, and monitoring.
 
 ### P1-001 Add repository hygiene checks
 
@@ -20,7 +22,24 @@ Acceptance criteria:
 - Output is actionable for new teammates.
 - The script is linked from the startup runbook.
 
-## Lakehouse Core
+### O1-001 Build Grafana container dashboard v1
+
+Acceptance criteria:
+
+- Dashboard uses Prometheus/cAdvisor metrics.
+- Panels include CPU, memory, network, and filesystem signals.
+- Dashboard JSON is stored under `monitoring/grafana`.
+
+### O1-002 Add service health checklist
+
+Acceptance criteria:
+
+- Checklist covers MinIO, Iceberg REST, Spark, Trino, Superset, Airflow, Prometheus, Grafana, and cAdvisor.
+- Each service has a URL or command check.
+
+## Team B: Lakehouse Core + Data Engineering
+
+Team B owns object storage, Iceberg tables, Spark transformations, Trino queries, and data quality.
 
 ### L1-001 Add table naming convention examples
 
@@ -37,8 +56,6 @@ Acceptance criteria:
 - Runbook explains how to identify bad views/tables.
 - Commands exist for safe local reset.
 - Scenario test evidence is included.
-
-## Data Engineering and Quality
 
 ### D1-001 Add CSV ingestion template
 
@@ -57,7 +74,9 @@ Acceptance criteria:
 - Good rows continue to silver only when quality policy allows it.
 - Documentation explains fail vs quarantine trade-offs.
 
-## Airflow and Operations
+## Team C: Orchestration + BI
+
+Team C owns workflow scheduling, backfill behavior, Superset datasets, and dashboard practices.
 
 ### A1-001 Add CSV ingestion DAG
 
@@ -75,8 +94,6 @@ Acceptance criteria:
 - Late-arriving data scenario is referenced.
 - Recovery and validation commands are included.
 
-## BI and Data Product
-
 ### B1-001 Build Superset dashboard v1
 
 Acceptance criteria:
@@ -93,24 +110,9 @@ Acceptance criteria:
 - Restore/import steps are documented.
 - Ownership for certified datasets is documented.
 
-## Observability
+## Team D: AI + Ingestion UX
 
-### O1-001 Build Grafana container dashboard v1
-
-Acceptance criteria:
-
-- Dashboard uses Prometheus/cAdvisor metrics.
-- Panels include CPU, memory, network, and filesystem signals.
-- Dashboard JSON is stored under `monitoring/grafana`.
-
-### O1-002 Add service health checklist
-
-Acceptance criteria:
-
-- Checklist covers MinIO, Iceberg REST, Spark, Trino, Superset, Airflow, Prometheus, Grafana, and cAdvisor.
-- Each service has a URL or command check.
-
-## AI and Advanced Analytics
+Team D owns the read-only AI query API, SQL guardrails, sample questions, and visual ingestion experiments.
 
 ### AI1-001 Add query logging
 
@@ -128,3 +130,18 @@ Acceptance criteria:
 - Examples use `gold.daily_sales`.
 - Guardrail behavior is documented.
 
+### UX1-001 Add first NiFi ingestion experiment note
+
+Acceptance criteria:
+
+- `ingestion/` contains a short experiment note or placeholder.
+- The note names one input, one expected output table, and one validation idea.
+- The experiment links to the Team D getting started guide.
+
+### UX1-002 Add first Hop pipeline experiment note
+
+Acceptance criteria:
+
+- `ingestion/` contains a short experiment note or placeholder.
+- The note explains how Hop could fit before bronze ingestion.
+- The experiment links to the Team D getting started guide.

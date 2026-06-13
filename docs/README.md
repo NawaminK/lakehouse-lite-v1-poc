@@ -11,15 +11,16 @@ Use this path if you are new to lakehouse or data platform work:
 3. `README.md`
 4. `docs/architecture/system-overview.md`
 5. `docs/learning/onboarding-journey.md`
-6. `docs/scenarios/index.md`
-7. `docs/references.md`
+6. `docs/team-getting-started.md`
+7. `docs/scenarios/index.md`
+8. `docs/references.md`
 
 ## Fast path
 
 1. Read `README.md`.
 2. Follow `docs/learning/onboarding-journey.md`.
 3. Run `make smoke`.
-4. Pick a workstream from `docs/team-roadmap.md`.
+4. Pick Team A, B, C, or D from `docs/team-getting-started.md`.
 5. Use `CONTRIBUTING.md` and `docs/engineering/definition-of-done.md` before opening a PR.
 
 ## Architecture
@@ -32,6 +33,7 @@ Use this path if you are new to lakehouse or data platform work:
 
 ## Team workflow
 
+- `docs/team-getting-started.md`
 - `docs/team-roadmap.md`
 - `docs/github-workflow.md`
 - `docs/backlog/README.md`

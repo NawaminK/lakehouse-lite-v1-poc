@@ -88,7 +88,7 @@ Expected learning outcome:
 
 ## Week 2: Make one safe contribution
 
-Pick one issue from `docs/backlog/README.md`.
+Pick one team from `docs/team-getting-started.md`, then choose one issue from `docs/backlog/README.md`.
 
 Recommended first contributions:
 

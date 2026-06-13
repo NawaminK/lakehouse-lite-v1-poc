@@ -25,7 +25,8 @@ Start with these docs before diving into commands:
 1. `docs/learning/plain-language-guide.md` explains the project in everyday language.
 2. `docs/learning/glossary.md` defines the main terms used across the repo.
 3. `docs/README.md` shows the full documentation map.
-4. `docs/references.md` links each topic to official documentation for deeper study.
+4. `docs/team-getting-started.md` explains Team A-D learning paths.
+5. `docs/references.md` links each topic to official documentation for deeper study.
 
 ## Service URLs
 
@@ -155,6 +156,7 @@ docs/README.md
 docs/learning/plain-language-guide.md
 docs/learning/glossary.md
 docs/learning/onboarding-journey.md
+docs/team-getting-started.md
 docs/team-roadmap.md
 docs/github-workflow.md
 docs/references.md
@@ -162,16 +164,12 @@ docs/learning/
 docs/runbooks/
 ```
 
-Recommended workstreams:
+Recommended teams:
 
-1. Platform and DevEx.
-2. Lakehouse Core.
-3. Data Engineering and Quality.
-4. Orchestration and Operations.
-5. BI and Data Product.
-6. Observability.
-7. AI and Advanced Analytics.
-8. Ingestion UX.
+1. Team A: Platform + Observability.
+2. Team B: Lakehouse Core + Data Engineering.
+3. Team C: Orchestration + BI.
+4. Team D: AI + Ingestion UX.
 
 ## Repository map
 
